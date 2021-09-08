@@ -1,4 +1,12 @@
 const admin = require("firebase-admin");
-const serviceAccount = require('./cafetero-surk-key.json');
+var credential = '';
 
-module.exports = admin.initializeApp({ credential: admin.credential.cert(serviceAccount)});
+try{
+    const serviceAccount = require('./cafetero-surk-key.json');
+    credential = admin.credential.cert(serviceAccount);
+} catch(err){
+    credential = admin.credential.applicationDefault();
+    console.log(err);
+}
+
+module.exports = admin.initializeApp({ credential: credential});

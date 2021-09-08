@@ -7,7 +7,8 @@ const postUser = (req, res) => {
         UserRef.add({
             name: req.body.name,
             email: req.body.email,
-            phoneNumber: req.body.phoneNumber
+            phoneNumber: req.body.phoneNumber,
+            pedido: req.body.pedido
         });
         res.status(200).send('Usuario agregado correctamente');
     } catch(err) {
